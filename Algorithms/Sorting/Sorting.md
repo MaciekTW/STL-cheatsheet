@@ -185,7 +185,7 @@ Algorithms used to change order of collections items.
 ```
 
 - Elements for which predicate **p** return true precede other elements
-- Relative order of elements if not preserved
+- Relative order of elements if **not** preserved
 - Return iterator to first element of second group
 -   <details>
 
@@ -204,8 +204,20 @@ Algorithms used to change order of collections items.
   <summary>partition_point </summary>
 
 ```c++
-
+    ForwardIt partition_point( ForwardIt first, ForwardIt last, UnaryPredicate p );
 ```
+- If container is partitioned the function return index of first element of second group
+- More general it returns pointer to first element that does not satisfy predicate **p**
+-   <details>
+
+    <summary> UnaryPredicate p </summary>
+    Maybe passed as lambda like 
+
+    ```c++
+        auto it = std::partition_point(v.begin(), v.end(), [](int i){return i % 2 == 0;});
+    ```
+
+    </details>
 
 </details>
 
@@ -213,8 +225,22 @@ Algorithms used to change order of collections items.
   <summary>stable_partition </summary>
 
 ```c++
-
+    BidirIt stable_partition( BidirIt first, BidirIt last, UnaryPredicate p );
 ```
+
+- Elements for which predicate **p** return true precede other elements
+- Relative order of elements if **preserved**
+- Return iterator to first element of second group
+-   <details>
+
+    <summary> UnaryPredicate p </summary>
+    Maybe passed as lambda like 
+
+    ```c++
+        auto it = std::stable_partition(v.begin(), v.end(), [](int i){return i % 2 == 0;});
+    ```
+
+    </details>
 
 </details>
 
@@ -222,7 +248,18 @@ Algorithms used to change order of collections items.
   <summary>is_partitioned </summary>
 
 ```c++
-
+    bool is_partitioned( InputIt first, InputIt last, UnaryPredicate p );
 ```
+- Returns true if container is divided into two groups based on predicate **p**
+-   <details>
+
+    <summary> UnaryPredicate p </summary>
+    Maybe passed as lambda like 
+
+    ```c++
+        auto it = std::stable_partition(v.begin(), v.end(), [](int i){return i % 2 == 0;});
+    ```
+    
+    </details>
 
 </details>
